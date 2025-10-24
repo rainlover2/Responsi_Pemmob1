@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".MainActivity">
+
+    <!-- 1. Gambar Header Stadion -->
+    <ImageView
+        android:id="@+id/imgClubHeader"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/norwich_stadium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <!-- 2. Logo Klub (Menumpuk di atas header) -->
+    <ImageView
+        android:id="@+id/imgClubLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:elevation="4dp"
+        android:src="@drawable/norwich_logo"
+        app:layout_constraintBottom_toTopOf="@+id/tvClubName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgClubHeader"
+        app:layout_constraintVertical_bias="0.8"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <!-- 3. Nama Klub (Menumpuk di atas header, dengan shadow) -->
+    <TextView
+        android:id="@+id/tvClubName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        tools:text="Norwich City FC"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/imgClubHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardProfile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="#FFFFE0"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/imgClubHeader">
+
+    <TextView
+        android:id="@+id/tvClubProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Memuat profil klub..."
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/black" />
+
+</com.google.android.material.card.MaterialCardView>
+
+    <!-- 5. Menu dalam bentuk CardView -->
+
+    <!-- Menu History -->
+<com.google.android.material.card.MaterialCardView
+android:id="@+id/cardClubHistory"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:layout_marginStart="16dp"
+android:layout_marginTop="16dp"
+android:layout_marginEnd="16dp"
+app:cardCornerRadius="8dp"
+app:cardElevation="2dp"
+android:clickable="true"
+android:focusable="true"
+android:foreground="?android:attr/selectableItemBackground"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/cardProfile">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:gravity="center_vertical">
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_history"
+        app:tint="@android:color/black" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Club History"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black" />
+</LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+
+    <!-- Menu Coach -->
+<com.google.android.material.card.MaterialCardView
+android:id="@+id/cardHeadCoach"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:layout_marginStart="16dp"
+android:layout_marginTop="8dp"
+android:layout_marginEnd="16dp"
+app:cardCornerRadius="8dp"
+app:cardElevation="2dp"
+android:clickable="true"
+android:focusable="true"
+android:foreground="?android:attr/selectableItemBackground"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/cardClubHistory">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:gravity="center_vertical">
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_coach"
+        app:tint="@android:color/black" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Head Coach"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black" />
+</LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+
+    <!-- Menu Squad -->
+<com.google.android.material.card.MaterialCardView
+android:id="@+id/cardTeamSquad"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:layout_marginStart="16dp"
+android:layout_marginTop="8dp"
+android:layout_marginEnd="16dp"
+app:cardCornerRadius="8dp"
+app:cardElevation="2dp"
+android:clickable="true"
+android:focusable="true"
+android:foreground="?android:attr/selectableItemBackground"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/cardHeadCoach">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:gravity="center_vertical">
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_squad"
+        app:tint="@android:color/black" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Team Squad"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black" />
+</LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+
+    <!-- 6. Progress Bar untuk Loading -->
+<ProgressBar
+android:id="@+id/progressBar"
+style="?android:attr/progressBarStyle"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:visibility="gone"
+android:elevation="10dp"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
