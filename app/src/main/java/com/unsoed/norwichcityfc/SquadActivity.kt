@@ -35,14 +35,8 @@ class SquadActivity : AppCompatActivity() {
             intent.getParcelableArrayListExtra(EXTRA_SQUAD)
         }
 
-        // (Opsional) Toast untuk debugging
-        // Toast.makeText(this, "Jumlah pemain: ${squadList?.size ?: 0}", Toast.LENGTH_LONG).show()
-
-        // Setup RecyclerView
         setupRecyclerView()
 
-        // Masukkan data ke adapter
-        // INI ADALAH BAGIAN YANG MUNGKIN HILANG/SALAH
         squadList?.let {
             if (it.isNotEmpty()) {
                 playerAdapter.submitList(it)
@@ -53,31 +47,21 @@ class SquadActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        // 1. Buat adapter dengan konstruktor KOSONG
         playerAdapter = PlayerAdapter()
-
-        // 2. Hubungkan adapter ke RecyclerView
         binding.rvSquad.adapter = playerAdapter
-
-        // 3. SET LISTENER-NYA DI SINI (SETELAH DIBUAT)
         playerAdapter.setOnItemClickListener { player ->
-            showPlayerDetail(player) // Panggil fungsi untuk menampilkan detail
+            showPlayerDetail(player)
         }
     }
 
-    // Fungsi untuk menampilkan detail pemain di kartu bawah
     private fun showPlayerDetail(player: Player) {
         binding.tvDetailName.text = player.name ?: "N/A"
         binding.tvDetailDob.text = formatSimpleDate(player.dateOfBirth)
         binding.tvDetailNationality.text = player.nationality ?: "N/A"
         binding.tvDetailPosition.text = player.position ?: "N/A"
-
-        // Tampilkan kartu
         binding.cardPlayerDetail.visibility = View.VISIBLE
     }
 
-    // Fungsi bantuan untuk format tanggal YYYY-MM-DD
-    // Menggunakan SimpleDateFormat (aman untuk API 24)
     private fun formatSimpleDate(dateString: String?): String {
         if (dateString == null) return "N/A"
 

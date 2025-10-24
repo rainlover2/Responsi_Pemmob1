@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Tombol Pelatih (ID BARU)
+        // Tombol Pelatih
         binding.cardHeadCoach.setOnClickListener {
             currentTeamData?.coach?.let { coach ->
                 val intent = Intent(this, CoachActivity::class.java)
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
             } ?: Toast.makeText(this, "Data pelatih tidak tersedia", Toast.LENGTH_SHORT).show()
         }
 
-        // Tombol Skuad Tim (ID BARU)
+        // Tombol Skuad Tim
         binding.cardTeamSquad.setOnClickListener {
             currentTeamData?.squad?.let { squad ->
                 if (squad.isNotEmpty()) {

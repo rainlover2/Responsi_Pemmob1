@@ -11,7 +11,7 @@ import com.unsoed.norwichcityfc.databinding.ListItemPlayerBinding
 
 class PlayerAdapter : ListAdapter<Player, PlayerAdapter.PlayerViewHolder>(PlayerDiffCallback()) {
 
-    // --- Ini untuk listener klik ---
+
     private var onItemClickListener: ((Player) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (Player) -> Unit) {
@@ -36,31 +36,29 @@ class PlayerAdapter : ListAdapter<Player, PlayerAdapter.PlayerViewHolder>(Player
             binding.tvPlayerName.text = player.name ?: "N/A"
             binding.tvPlayerNationality.text = player.nationality ?: "N/A"
 
-            // --- INI ADALAH LOGIKA PEWARNAAN YANG BENAR ---
-
             var cardColor = Color.WHITE
-            var textColor = Color.BLACK // Default warna teks
+            var textColor = Color.BLACK
 
             // Cek posisi
             when (player.position) {
                 "Goalkeeper" -> {
-                    cardColor = Color.parseColor("#FFFF00") // Kuning
-                    textColor = Color.BLACK // Teks hitam di atas kuning
+                    cardColor = Color.parseColor("#FFFF00")
+                    textColor = Color.BLACK
                 }
                 "Defender", "Centre-Back", "Defence", "Left-Back", "Right-Back" -> {
-                    cardColor = Color.parseColor("#0000FF") // Biru
-                    textColor = Color.WHITE // Teks putih di atas biru
+                    cardColor = Color.parseColor("#0000FF")
+                    textColor = Color.WHITE
                 }
                 "Midfield", "Central Midfield", "Defensive Midfield", "Left Midfield", "Left Winger", "Right Winger" -> {
-                    cardColor = Color.parseColor("#008000") // Hijau
-                    textColor = Color.WHITE // Teks putih di atas hijau
+                    cardColor = Color.parseColor("#008000")
+                    textColor = Color.WHITE
                 }
-                "Forward", "Attacker", "Centre-Forward", "Offence" -> { // Menambahkan "Attacker" untuk jaga-jaga
-                    cardColor = Color.parseColor("#FF0000") // Merah
-                    textColor = Color.WHITE // Teks putih di atas merah
+                "Forward", "Attacker", "Centre-Forward", "Offence" -> {
+                    cardColor = Color.parseColor("#FF0000")
+                    textColor = Color.WHITE
                 }
                 else -> {
-                    cardColor = Color.WHITE // Default jika posisi tidak dikenali
+                    cardColor = Color.WHITE
                     textColor = Color.BLACK
                 }
             }

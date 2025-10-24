@@ -1,4 +1,4 @@
-// Pastikan package name Anda benar
+
 package com.unsoed.norwichcityfc
 
 import android.os.Build
@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.unsoed.norwichcityfc.data.Coach
 import com.unsoed.norwichcityfc.databinding.ActivityCoachBinding
-// Import java.time sudah dihapus karena tidak dipakai
 import java.util.Locale
 import java.text.SimpleDateFormat
 
@@ -26,7 +25,7 @@ class CoachActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Head Coach"
 
-        // Ambil data Coach yang dikirim dari MainActivity
+
         val coach = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra(EXTRA_COACH, Coach::class.java)
         } else {
@@ -36,26 +35,16 @@ class CoachActivity : AppCompatActivity() {
 
         // Tampilkan data pelatih
         coach?.let {
-            // --- Mengisi Data Sesuai Layout Baru ---
-
-            // 1. Set Gambar Pelatih (WAJIB Anda cari manual)
             Glide.with(this)
-                .load(R.drawable.liam_manning) // Anda sudah mengganti ini, bagus!
-                .placeholder(R.drawable.ic_coach) // Placeholder
-                .error(R.drawable.ic_coach) // Gambar jika error
+                .load(R.drawable.liam_manning)
+                .error(R.drawable.ic_coach)
                 .into(binding.imgCoach)
 
-            // 2. Set Info di dalam Card
             binding.tvCoachName.text = it.name ?: "Nama Tidak Diketahui"
             binding.tvCoachNationality.text = it.nationality ?: "N/A"
-
-            // Format tanggal agar sesuai contoh (YYYY-MM-DD)
             binding.tvCoachDob.text = formatSimpleDate(it.dateOfBirth)
         }
-    } // <-- Penutup fungsi onCreate
-
-    // --- FUNGSI formatSimpleDate SEKARANG ADA DI TEMPAT YANG BENAR ---
-    // (di dalam kelas CoachActivity, tapi di luar onCreate)
+    }
     private fun formatSimpleDate(dateString: String?): String {
         if (dateString == null) return "N/A"
 
@@ -74,11 +63,11 @@ class CoachActivity : AppCompatActivity() {
             if (date != null) {
                 outputFormat.format(date)
             } else {
-                dateString // Kembalikan string asli jika parse gagal
+                dateString
             }
         } catch (e: Exception) {
-            dateString // Kembalikan string asli jika ada error
+            dateString
         }
     }
 
-} // <-- Penutup kelas CoachActivity (HANYA ADA SATU)
+}

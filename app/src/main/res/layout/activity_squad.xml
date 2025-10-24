@@ -23,7 +23,6 @@
 
     tools:listitem="@layout/list_item_player" />
 
-    <!-- 2. Kartu Detail Pemain (Awalnya Tersembunyi) -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardPlayerDetail"
         android:layout_width="0dp"
@@ -37,7 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-    tools:visibility="visible"> <!-- tools:visibility agar terlihat di preview -->
+    tools:visibility="visible">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,7 +82,6 @@
     </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
-    <!-- AKHIR DARI CARDVIEW -->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-    <!-- AKHIR DARI CONSTRAINTLAYOUT -->
